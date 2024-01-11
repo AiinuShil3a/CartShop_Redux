@@ -1,7 +1,7 @@
 import React from 'react'
-import CreateProduction from './CreateProduction'
+import CreateProduction from '../component/CreateProduction'
 import { useSelector } from 'react-redux'
-import ProdctItem from "./product_item"
+import ProdctItem from "../component/product_item"
 const home = () => {
 
     const products = useSelector((state) => state.products)

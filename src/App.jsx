@@ -1,5 +1,5 @@
 import Navbar from './component/navbar'
-import Page from './component/page'
+import Page from './pages/page'
 import { Provider } from 'react-redux'
 import {store} from './redux/store'
 import './style.css'
