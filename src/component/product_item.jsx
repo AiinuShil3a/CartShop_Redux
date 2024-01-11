@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { createCart } from "../redux/carts/actions";
 import { removeQuantity } from "../redux/products/actions";
 
-const productItem = ({ product }) => {
+const productItem = ({ product,productQuantity }) => {
   const dispatch = useDispatch();
   const { id, image, name, category, price, quantity } = product;
   const handleCreateCart = () => {

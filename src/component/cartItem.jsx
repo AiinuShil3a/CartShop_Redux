@@ -1,34 +1,44 @@
 import React from "react";
-import {removeCart , increaseQuantity , decreaseQuantity} from '../redux/carts/actions'
-import {createQuantity , removeQuantity} from '../redux/products/actions'
-import { useDispatch } from 'react-redux'
-
+import {
+  removeCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../redux/carts/actions";
+import { createQuantity, removeQuantity } from "../redux/products/actions";
+import { useDispatch } from "react-redux";
 
 const CartItem = ({ product }) => {
-  const {id , name, image, quantity, category, price , productId } = product;
+  const { id, name, image, quantity, category, price, productId } = product;
   const dispatch = useDispatch();
-  const handleQuantityChange = (change) => {
-    // Implement the logic to handle quantity change
+  console.log(quantity);
+  const handleQuantityAdd = () => {
+    dispatch(increaseQuantity(id));
+    dispatch(removeQuantity(productId, 1));
+  };
+
+  const handleQuantityRemove = () => {
+    dispatch(decreaseQuantity(id));
+    dispatch(createQuantity(productId, 1));
   };
 
   const handleRemoveFromCart = () => {
-    dispatch(removeCart(id))
-    dispatch(createQuantity(productId , quantity))
+    dispatch(removeCart(id));
+    dispatch(createQuantity(productId, quantity));
   };
+
+  if (quantity === 0) {
+    handleRemoveFromCart();
+  }
 
   return (
     <div className="rounded-lg mb-4 p-6 bg-white shadow-md sm:flex sm:justify-start relative">
-      <img
-        src={image}
-        alt={name}
-        className="w-full h-28 rounded sm:w-40"
-      />
+      <img src={image} alt={name} className="w-full h-28 rounded sm:w-40" />
 
       <div className="absolute top-0 right-0 mt-4 mr-4">
         <div className="flex items-center border border-gray-100">
           <button
             className="py-1 px-3.5 bg-gray-100 hover:bg-blue-400 hover:text-gray-100"
-            onClick={() => handleQuantityChange(-1)}
+            onClick={handleQuantityRemove}
           >
             -
           </button>
@@ -41,7 +51,7 @@ const CartItem = ({ product }) => {
           />
           <button
             className="py-1 px-3.5 bg-gray-100 hover:bg-blue-400 hover:text-gray-100"
-            onClick={() => handleQuantityChange(1)}
+            onClick={handleQuantityAdd}
           >
             +
           </button>

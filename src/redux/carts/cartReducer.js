@@ -11,7 +11,7 @@ const nextId = (state) => {
 };
 
 const findProduct = (state , action)  => {
-    return state.find((p) => p.productID === action.payload.id);
+    return state.find((p) => p.productId === action.payload.id);
 }
 
 let product;
