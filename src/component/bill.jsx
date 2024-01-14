@@ -5,7 +5,7 @@ import generatePayload from "promptpay-qr"
 import qrcode from "qrcode"
 
 const Bill = () => {
-    const mobileNumber = "061-429-4288";
+    const mobileNumber = "098-251-0776";
     const IDCardNumber = "0-0000-00000-00-0"
     const [svg, setSvg] = useState();
     const carts = useSelector((state) => state.carts);
